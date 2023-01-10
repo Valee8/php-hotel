@@ -50,6 +50,7 @@
         ];
 
         $park = $_GET["park"];
+        $voto = $_GET["voto"];
 
     ?>
 </head>
@@ -58,6 +59,8 @@
     <form>
         <label for="parking">Parcheggio: </label>
         <input type="checkbox" name="park" value="Si">
+        <label for="mail">Inserisci voto: </label>
+        <input type="text" name="voto">
         <input type="submit" value="Invia">
     </form>
 
@@ -107,8 +110,7 @@
 
                 $div = "</div>";
 
-
-                if ($park !== $parking && $park === "Si") {
+                if ($park !== $parking && $park === "Si" || $vote < $voto) {
                     $row = str_replace("<div class='row'>", "<div class='row d-none'>", $row);
                 }
 
