@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <title>PHP Hotel</title>
 
     <?php 
@@ -53,19 +54,55 @@
 <body>
 
 
-<?php
+<div class="row fw-bold">
+    <div class="col-2">
+        Nome hotel
+    </div>
 
-    foreach ($hotels as $hotel) {
-        $name = $hotel["name"];
-        $description = $hotel["description"];
-        $parking = $hotel["parking"];
-        $vote = $hotel["vote"];
-        $distance_to_center = $hotel["distance_to_center"];
+    <div class="col-2">
+        Descrizione
+    </div>
 
-        echo $name . "<br>" . $description . "<br>" . $parking . "<br>" . $vote . "<br>" . $distance_to_center . "<br><br>";
-    }
+    <div class="col-2">
+        Parcheggio
+    </div>
 
-?>
+    <div class="col-2">
+        Voto
+    </div>
+
+    <div class="col-2">
+        Distanza dal centro
+    </div>
+</div>
+
+    <?php
+
+        foreach ($hotels as $hotel) {
+            $name = $hotel["name"];
+            $description = $hotel["description"];
+            $parking = $hotel["parking"];
+            $vote = $hotel["vote"];
+            $distance_to_center = $hotel["distance_to_center"];
+
+            if ($parking) {
+                $parking = "Si";
+            }
+            else {
+                $parking = "No";
+            }
+
+            echo 
+                "<div class='row'>" .
+                    "<div class='col-2'>" . $name . "</div>" . 
+                        "<div class='col-2'>" . $description . "</div>" .
+                            "<div class='col-2'>" . $parking . "</div>" .
+                                "<div class='col-2'>" . $vote . "</div>" .
+                                    "<div class='col-2'>" . $distance_to_center . "</div>" . 
+                                        "</div>";
+        }
+
+    ?>
     
 </body>
 </html>
