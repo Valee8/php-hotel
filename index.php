@@ -51,6 +51,21 @@
     ?>
 </head>
 <body>
+
+
+<?php
+
+    foreach ($hotels as $hotel) {
+        $name = $hotel["name"];
+        $description = $hotel["description"];
+        $parking = $hotel["parking"];
+        $vote = $hotel["vote"];
+        $distance_to_center = $hotel["distance_to_center"];
+
+        echo $name . "<br>" . $description . "<br>" . $parking . "<br>" . $vote . "<br>" . $distance_to_center . "<br><br>";
+    }
+
+?>
     
 </body>
 </html>
