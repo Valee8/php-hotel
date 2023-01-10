@@ -56,7 +56,7 @@
 <body>
 
     <form>
-        <label for="badword">Parcheggio: </label>
+        <label for="parking">Parcheggio: </label>
         <input type="checkbox" name="park" value="Si">
         <input type="submit" value="Invia">
     </form>
