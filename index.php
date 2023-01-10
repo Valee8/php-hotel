@@ -49,9 +49,17 @@
 
         ];
 
+        $park = $_GET["park"];
+
     ?>
 </head>
 <body>
+
+    <form>
+        <label for="badword">Parcheggio: </label>
+        <input type="checkbox" name="park" value="Si">
+        <input type="submit" value="Invia">
+    </form>
 
     <div class="container-fluid">
 
@@ -93,14 +101,25 @@
                     $parking = "No";
                 }
 
+                $col = "<div class='col-2'>";
+
+                $row = "<div class='row'>";
+
+                $div = "</div>";
+
+
+                if ($park !== $parking && $park === "Si") {
+                    $row = str_replace("<div class='row'>", "<div class='row d-none'>", $row);
+                }
+
                 echo 
-                    "<div class='row'>" .
-                        "<div class='col-2'>" . $name . "</div>" . 
-                            "<div class='col-2'>" . $description . "</div>" .
-                                "<div class='col-2'>" . $parking . "</div>" .
-                                    "<div class='col-2'>" . $vote . "</div>" .
-                                        "<div class='col-2'>" . $distance_to_center . "</div>" . 
-                                            "</div>";
+                    $row .
+                    $col . $name . $div . 
+                    $col . $description . $div .
+                    $col . $parking . $div .
+                    $col . $vote . $div .
+                    $col . $distance_to_center . $div . 
+                    $div;
             }
 
         ?>
