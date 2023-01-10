@@ -53,56 +53,59 @@
 </head>
 <body>
 
+    <div class="container-fluid">
 
-<div class="row fw-bold">
-    <div class="col-2">
-        Nome hotel
-    </div>
+        <div class="row fw-bold">
+            <div class="col-2">
+                Nome hotel
+            </div>
 
-    <div class="col-2">
-        Descrizione
-    </div>
+            <div class="col-2">
+                Descrizione
+            </div>
 
-    <div class="col-2">
-        Parcheggio
-    </div>
+            <div class="col-2">
+                Parcheggio
+            </div>
 
-    <div class="col-2">
-        Voto
-    </div>
+            <div class="col-2">
+                Voto
+            </div>
 
-    <div class="col-2">
-        Distanza dal centro
-    </div>
-</div>
+            <div class="col-2">
+                Distanza dal centro
+            </div>
+        </div>
 
-    <?php
+        <?php
 
-        foreach ($hotels as $hotel) {
-            $name = $hotel["name"];
-            $description = $hotel["description"];
-            $parking = $hotel["parking"];
-            $vote = $hotel["vote"];
-            $distance_to_center = $hotel["distance_to_center"];
+            foreach ($hotels as $hotel) {
+                $name = $hotel["name"];
+                $description = $hotel["description"];
+                $parking = $hotel["parking"];
+                $vote = $hotel["vote"];
+                $distance_to_center = $hotel["distance_to_center"];
 
-            if ($parking) {
-                $parking = "Si";
+                if ($parking) {
+                    $parking = "Si";
+                }
+                else {
+                    $parking = "No";
+                }
+
+                echo 
+                    "<div class='row'>" .
+                        "<div class='col-2'>" . $name . "</div>" . 
+                            "<div class='col-2'>" . $description . "</div>" .
+                                "<div class='col-2'>" . $parking . "</div>" .
+                                    "<div class='col-2'>" . $vote . "</div>" .
+                                        "<div class='col-2'>" . $distance_to_center . "</div>" . 
+                                            "</div>";
             }
-            else {
-                $parking = "No";
-            }
 
-            echo 
-                "<div class='row'>" .
-                    "<div class='col-2'>" . $name . "</div>" . 
-                        "<div class='col-2'>" . $description . "</div>" .
-                            "<div class='col-2'>" . $parking . "</div>" .
-                                "<div class='col-2'>" . $vote . "</div>" .
-                                    "<div class='col-2'>" . $distance_to_center . "</div>" . 
-                                        "</div>";
-        }
+        ?>
+    </div>
 
-    ?>
     
 </body>
 </html>
