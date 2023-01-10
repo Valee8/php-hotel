@@ -59,7 +59,7 @@
     <form>
         <label for="parking">Parcheggio: </label>
         <input type="checkbox" name="park" value="Si">
-        <label for="mail">Inserisci voto: </label>
+        <label for="voto">Inserisci voto: </label>
         <input type="text" name="voto">
         <input type="submit" value="Invia">
     </form>
