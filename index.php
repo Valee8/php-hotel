@@ -49,84 +49,77 @@
 
         ];
 
-        $park = $_GET["park"];
-        $voto = $_GET["voto"];
-
     ?>
 </head>
 <body>
 
     <form>
         <label for="parking">Parcheggio: </label>
-        <input type="checkbox" name="park" value="Si">
-        <label for="voto">Inserisci voto: </label>
-        <input type="text" name="voto">
-        <input type="submit" value="Invia">
+        <input type="checkbox" name="parking">
+        <br>
+        <label for="vote">Inserisci voto: </label>
+        <input type="text" name="vote">
+        <br>
+        <input type="submit" value="Filtra">
     </form>
 
-    <div class="container-fluid">
 
-        <div class="row fw-bold">
-            <div class="col-2">
-                Nome hotel
-            </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nome hotel
+                </th>
+                <th>
+                    Descrizione
+                </th>
+                <th>
+                    Parcheggio
+                </th>
+                <th>
+                    Voto
+                </th>
+                <th>
+                    Distanza dal centro
+                </th>
+            </tr>
 
-            <div class="col-2">
-                Descrizione
-            </div>
+        </thead>
 
-            <div class="col-2">
-                Parcheggio
-            </div>
 
-            <div class="col-2">
-                Voto
-            </div>
+        <tbody>
+            <tr>  
+                <?php
 
-            <div class="col-2">
-                Distanza dal centro
-            </div>
-        </div>
+                    $filterParking = $_GET["parking"];
+                    $filterVote = $_GET["vote"];
 
-        <?php
+                    foreach ($hotels as $hotel) {
+                        $name = $hotel["name"];
+                        $description = $hotel["description"];
+                        $parking = $hotel["parking"];
+                        $vote = $hotel["vote"];
+                        $distance_to_center = $hotel["distance_to_center"];
 
-            foreach ($hotels as $hotel) {
-                $name = $hotel["name"];
-                $description = $hotel["description"];
-                $parking = $hotel["parking"];
-                $vote = $hotel["vote"];
-                $distance_to_center = $hotel["distance_to_center"];
+                        if ($vote >= $filterVote && (!$filterParking || ($filterParking && $parking))) {
+            
+                            echo 
+                                "<tr>" .
+                                "<td>" . $name . "</td>" . 
+                                "<td>" . $description . "</td>" .
+                                "<td>" . ( $parking ? "Si" : "No" ) . "</td>" .
+                                "<td>" . $vote . "</td>" .
+                                "<td>" . $distance_to_center . "</td>" . 
+                                "</tr>";
 
-                if ($parking) {
-                    $parking = "Si";
-                }
-                else {
-                    $parking = "No";
-                }
+                            }
+                    }
 
-                $col = "<div class='col-2'>";
+                ?>
+           
+            </tr>
+        </tbody> 
+    </table>
 
-                $row = "<div class='row'>";
-
-                $div = "</div>";
-
-                if ($park !== $parking && $park === "Si" || $vote < $voto) {
-                    $row = str_replace("<div class='row'>", "<div class='row d-none'>", $row);
-                }
-
-                echo 
-                    $row .
-                    $col . $name . $div . 
-                    $col . $description . $div .
-                    $col . $parking . $div .
-                    $col . $vote . $div .
-                    $col . $distance_to_center . $div . 
-                    $div;
-            }
-
-        ?>
-    </div>
-
-    
 </body>
 </html>
